@@ -1,16 +1,15 @@
+import { Route, Routes } from "react-router-dom";
+import Layout from "./components/Layout";
+import Basics from "./basics/index";
+
 function App() {
   return (
     <div className="App">
-      <div id="my-div" className="text-blue-500 text-2xl">
-        <div className="animate-ping">
-          Ping
-        </div>
-        <div className="animate-pulse">Pulse</div>
-        <div className="animate-bounce">Bounce</div>
-
-        <div className="motion-safe:animate-pulse">motion-safe pulse</div>
-        Hello
-      </div>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="basics" element={<Basics />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
