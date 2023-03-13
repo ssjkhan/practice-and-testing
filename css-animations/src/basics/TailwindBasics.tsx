@@ -1,3 +1,5 @@
+import { AnimationDescription, AnimationDisplay } from "../components/";
+
 export default function TailwindBasics() {
   return (
     <div>

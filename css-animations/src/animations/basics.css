@@ -1,0 +1,18 @@
+@layer components {
+  @keyframes example {
+    from {
+      background-color: red;
+    }
+
+    to {
+      background-color: yellow;
+    }
+  }
+
+  .testing-basics {
+    background-color: red;
+    animation-name: example;
+    animation-duration: 4s;
+
+  }
+}

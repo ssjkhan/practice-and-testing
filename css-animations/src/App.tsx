@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="basics" element={<Basics />} />
+          <Route path="basics/*" element={<Basics />} />
         </Route>
       </Routes>
     </div>
