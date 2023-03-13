@@ -325,6 +325,8 @@ module.exports = function (webpackEnv) {
         ...(modules.webpackAliases || {}),
         // custom alias
         "@components": path.resolve(__dirname, "../src/components"),
+        "@animations": path.resolve(__dirname, "../src/animations"),
+        "@assets": path.resolve(__dirname, "../assets"),
       },
       plugins: [
         // Prevents users from importing files from outside of src/ (or node_modules/).
