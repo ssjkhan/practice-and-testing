@@ -1,6 +1,5 @@
-# Gitignore template
-
-#logs
+# Logs
+logs
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -11,7 +10,6 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
-build
 *.local
 
 # Editor directories and files
@@ -24,4 +22,3 @@ build
 *.njsproj
 *.sln
 *.sw?
-.ignore
