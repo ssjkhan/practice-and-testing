@@ -1,33 +1,81 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import axios from "axios";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [loginData, setLoginData] = useState();
+  const [sessionData, setSessionData] = useState();
+  const [logoutData, setLogoutData] = useState();
+
+  async function handleSubmit(e: React.SyntheticEvent) {
+    e.preventDefault();
+
+    const target = e.target as typeof e.target & {
+      email: { value: string };
+      password: { value: string };
+    };
+    const email = target.email.value;
+    const password = target.password.value;
+
+    axios
+      .post(
+        `http://localhost:4000/api/session`,
+        { email, password },
+        {
+          withCredentials: true,
+        },
+      )
+      .then((res) => setLoginData(res.data))
+      .catch((error) => setLoginData(error.message));
+  }
+
+  async function getSessionData() {
+    axios
+      .get(`http://localhost:4000/api/session`, {
+        withCredentials: true,
+      })
+      .then((res) => setSessionData(res.data))
+      .catch((error) => setSessionData(error.message));
+  }
+
+  async function logout() {
+    axios
+      .delete(`http://localhost:4000/api/session`, {
+        withCredentials: true,
+      })
+      .then((res) => setLogoutData(res.data))
+      .catch((error) => setLogoutData(error.message));
+  }
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="wrapper">
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="email">Email</label>
+          <input type="email" id="email" placeholder="jane.doe@example.com" />
+          <label htmlFor="password">Password</label>
+          <input type="password" id="password" placeholder="******" />
+
+          <button type="submit">Login</button>
+        </form>
+
+        <div className="data">{JSON.stringify(loginData)}</div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+
+      <div className="wrapper">
+        <h2>Session</h2>
+        <button onClick={getSessionData}>Get session data</button>
+
+        <div className="data">{JSON.stringify(sessionData, null, 4)}</div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+      <div className="wrapper">
+        <h2>Logout</h2>
+        <button onClick={logout}>Logout</button>
+
+        <div className="data">{JSON.stringify(logoutData, null, 4)}</div>
+      </div>
     </div>
   );
 }
