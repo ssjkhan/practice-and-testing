@@ -1,3 +1,11 @@
+import useAuth from "@features/auth/useAuth";
+
 export default function Logout() {
-  return <div className="form-el">This is logout</div>;
+  const { logout } = useAuth();
+
+  return (
+    <div className="form-el">
+      <button onClick={logout}>Logout</button>
+    </div>
+  );
 }
