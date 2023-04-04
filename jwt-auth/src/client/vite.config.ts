@@ -16,6 +16,11 @@ if (process.env.NODE_ENV === "production ") {
   // prod config
   viteConfig = {
     plugins: [react()],
+    resolve: {
+      alias: {
+        "@features/": "./src/features/",
+      },
+    },
     build: {
       outDir: "../../build/client/dist",
       manifest: true,
@@ -30,6 +35,11 @@ if (process.env.NODE_ENV === "production ") {
 } else {
   viteConfig = {
     plugins: [react()],
+    resolve: {
+      alias: {
+        "@features/": "./src/features/",
+      },
+    },
     build: {
       outDir: "./dist",
       manifest: true,
