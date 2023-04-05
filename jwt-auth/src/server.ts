@@ -25,6 +25,13 @@ server.get("/api/v1", (_: Request, res: Response) => {
   });
 });
 
+server.get("/api/v2", (_: Request, res: Response) => {
+  res.json({
+    project: "Typescript, React and Express Boilerplate",
+    from: "ssjkhan v2",
+  });
+});
+
 // serving client and listening on port
 server.use("/", ServeClient);
 server.listen(
