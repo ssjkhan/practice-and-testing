@@ -18,7 +18,7 @@ export default function useAuth() {
       body: body,
     });
 
-    console.log(resp);
+    return resp.json();
   }
 
   function logout() {

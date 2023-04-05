@@ -12,16 +12,16 @@ export default function Login() {
     { "username": "123", "password": "1234" } as loginStateType,
   );
 
-  function handleSubmit(e: SyntheticEvent) {
+  async function handleSubmit(e: SyntheticEvent) {
     e.preventDefault();
-    login();
+    const data = await login(loginState.username, loginState.password);
+    console.log(data);
+    setLoginState({} as loginStateType);
   }
 
   function handleChange(e: SyntheticEvent) {
     const input = e.target as HTMLInputElement;
-
     setLoginState({ ...loginState, [input.name]: [input.value] });
-    console.log(e.target);
   }
 
   return (

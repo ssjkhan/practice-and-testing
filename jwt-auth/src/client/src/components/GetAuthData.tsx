@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 export default function GetData() {
   // const resp = await DataService();
+  // const [data, setData] = useState({})
   const [state, setState] = useState({});
   function handleClick() {
     DataService().then((res) => {
@@ -13,6 +14,7 @@ export default function GetData() {
   useEffect(() => {
     async function getAuthData() {
       const data = await DataService();
+      console.log(data);
       setState(data);
     }
   }, []);
