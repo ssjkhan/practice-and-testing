@@ -19,6 +19,7 @@ if (process.env.NODE_ENV === "production ") {
     resolve: {
       alias: {
         "@features/": "./src/features/",
+        "@services/": "./src/services/",
       },
     },
     build: {
@@ -38,6 +39,7 @@ if (process.env.NODE_ENV === "production ") {
     resolve: {
       alias: {
         "@features/": "./src/features/",
+        "@services/": "./src/services/",
       },
     },
     build: {
