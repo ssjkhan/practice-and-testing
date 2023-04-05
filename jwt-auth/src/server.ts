@@ -1,4 +1,4 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express, NextFunction, Request, Response } from "express";
 import GeneralMiddleware from "@middleware/general.middleware";
 import { GetApplicationMode } from "@utils/mode.util";
 import {
@@ -7,6 +7,7 @@ import {
 } from "@middleware/client.middleware";
 import EnvInit from "@middleware/env.middleware";
 import ProtectedApi from "./api/v2.api";
+import AuthApi from "./api/auth.api";
 
 // initialize server variables
 EnvInit();
@@ -26,10 +27,15 @@ server.get("/api/v1", (_: Request, res: Response) => {
   });
 });
 
-server.use(ProtectedApi);
+server.use("/api/auth", AuthApi);
+
+server.use("/api/v2", ProtectedApi);
 
 // serving client and listening on port
-server.use("/", ServeClient);
+server.use("/", (_: Request, __: Response, next: NextFunction) => {
+  console.log("Serving client");
+  next();
+}, ServeClient);
 server.listen(
   port,
   () => {
