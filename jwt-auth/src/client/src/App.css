@@ -1,0 +1,15 @@
+.centered {
+  margin: auto;
+  border: 3px solid black;
+  padding: 10px;
+  width: 50%;
+  height: auto;
+}
+
+.form-el {
+  margin: auto;
+  border: 3px solid orange;
+  padding: 10px;
+  margin: 10px;
+  width: 75% height: auto;
+}
