@@ -10,6 +10,7 @@ way to becoming a great software developer.
 
 ### Log
 
-| Topic          | Dir            | Resource                                   | Notable Projects |
-| -------------- | -------------- | ------------------------------------------ | ---------------- |
-| CSS Animations | css-animations | E. Weyl, Transitions and Animations in CSS |                  |
+| Topic                        | Dir            | Resource                                   | Notable Projects |
+| ---------------------------- | -------------- | ------------------------------------------ | ---------------- |
+| CSS Animations               | css-animations | E. Weyl, Transitions and Animations in CSS |                  |
+| json-webtoken authentication | jwt-auth       | Various online                             |                  |
